@@ -11,7 +11,6 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.DynamicDrawableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.URLSpan;
@@ -56,15 +55,15 @@ public class MainActivity extends AppCompatActivity {
         SpannableString span4=new SpannableString("点击事件");
         ClickableSpan clickspan=new ClickableSpan() {
             @Override
-            public void onClick(View widget) {
+            public void onClick(View view) {
                 //设置点击事件
                 Intent intent = new Intent(MainActivity.this, music.class);
                 startActivity(intent);
             }
             @Override
-            public void updateDrawState(TextPaint ds) {
-                ds.setColor(ContextCompat.getColor(MainActivity.this,R.color.colorPrimary));
-                ds.setUnderlineText(true);
+            public void updateDrawState(TextPaint tp) {
+                tp.setColor(ContextCompat.getColor(MainActivity.this,R.color.colorPrimary));
+                tp.setUnderlineText(true);
             }
         };
         span4.setSpan(clickspan, 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
